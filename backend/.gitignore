@@ -1,0 +1,23 @@
+# Compiled output
+dist/
+build/
+*.js.map
+
+# Dependencies
+node_modules/
+
+# Environment
+.env
+.env.test
+.env.local
+
+# Logs
+logs/
+*.log
+
+# Tests
+coverage/
+.nyc_output/
+
+# TypeScript
+*.tsbuildinfo
