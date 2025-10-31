@@ -1,0 +1,90 @@
+{
+  "game": {
+    "title": "Hangman Game",
+    "subtitle": "Guess the word letter by letter",
+    "newGame": "New Game",
+    "guess": "Guess a Letter",
+    "surrender": "Surrender",
+    "gameWon": "You Won!",
+    "gameLost": "Game Over!",
+    "word": "The word was",
+    "category": "Category",
+    "difficulty": "Difficulty",
+    "attemptsLeft": "Attempts left",
+    "guessedLetters": "Guessed letters",
+    "incorrectGuesses": "Incorrect Guesses",
+    "lettersGuessed": "Letters Guessed",
+    "correctGuess": "Correct letter!",
+    "incorrectGuess": "Incorrect letter",
+    "alreadyGuessed": "Already guessed",
+    "selectLetter": "Select a letter to guess",
+    "loading": "Loading...",
+    "guessTheWord": "Guess the Word",
+    "congratulations": "Congratulations! You guessed the word!",
+    "betterLuckNextTime": "Better luck next time!",
+    "theWordWas": "The word was:",
+    "correctWordWas": "The correct word was:",
+    "playAgain": "Play Again",
+    "changeDifficulty": "Change Difficulty",
+    "tryAgain": "Try Again"
+  },
+  "categories": {
+    "animals": "Animals",
+    "objects": "Objects",
+    "fruits": "Fruits",
+    "countries": "Countries",
+    "movies": "Movies"
+  },
+  "difficulty": {
+    "easy": "Easy",
+    "medium": "Medium",
+    "hard": "Hard"
+  },
+  "rules": {
+    "title": "Game Rules",
+    "howToPlay": "How to Play",
+    "rule1": "Guess the word letter by letter",
+    "rule2": "You have 6 attempts",
+    "rule3": "Each wrong guess costs one attempt",
+    "rule4": "Win by completing the word",
+    "rule5": "Lose if you use all 6 attempts",
+    "viewRules": "View Rules",
+    "close": "Close"
+  },
+  "tips": {
+    "title": "Tips",
+    "tip1": "Start with common vowels (A, E, I, O, U)",
+    "tip2": "Try frequent consonants (R, S, T, N, L)",
+    "tip3": "Use the category as a hint",
+    "tip4": "Look for common letter patterns"
+  },
+  "stats": {
+    "wins": "Wins",
+    "losses": "Losses",
+    "winRate": "Win Rate",
+    "totalGames": "Total Games"
+  },
+  "footer": {
+    "about": "About",
+    "aboutText": "Classic Hangman game with modern design. Test your vocabulary and have fun!",
+    "quickLinks": "Quick Links",
+    "howToPlay": "How to Play",
+    "tips": "Tips & Tricks",
+    "statistics": "Statistics",
+    "contact": "Connect",
+    "copyright": "Hangman Game. All rights reserved."
+  },
+  "errors": {
+    "error": "Error",
+    "failedToStartGame": "Failed to start game. Please try again.",
+    "failedToGuessLetter": "Failed to guess letter. Please try again."
+  },
+  "common": {
+    "yes": "Yes",
+    "no": "No",
+    "ok": "OK",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "language": "Language"
+  }
+}

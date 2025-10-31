@@ -1,0 +1,40 @@
+{
+  "name": "hangman-game",
+  "version": "1.0.0",
+  "description": "Full-stack Hangman game with hexagonal architecture",
+  "scripts": {
+    "dev": "docker-compose up",
+    "dev:detached": "docker-compose up -d",
+    "prod": "docker-compose -f docker-compose.prod.yml up -d",
+    "build": "docker-compose -f docker-compose.prod.yml build",
+    "down": "docker-compose down && docker-compose -f docker-compose.prod.yml down",
+    "logs": "docker-compose logs -f",
+    "logs:backend": "docker-compose logs -f backend",
+    "logs:frontend": "docker-compose logs -f frontend",
+    "logs:postgres": "docker-compose logs -f postgres",
+    "clean": "docker-compose down -v --rmi all",
+    "restart": "docker-compose restart",
+    "migrate": "docker-compose exec backend npm run migrate",
+    "seed": "docker-compose exec backend npm run seed",
+    "test:backend": "cd backend && npm test",
+    "test:frontend": "cd frontend && npm test",
+    "install:all": "cd backend && npm install && cd ../frontend && npm install",
+    "backend:shell": "docker-compose exec backend sh",
+    "frontend:shell": "docker-compose exec frontend sh",
+    "postgres:shell": "docker-compose exec postgres psql -U hangman_user -d hangman_db"
+  },
+  "keywords": [
+    "hangman",
+    "game",
+    "typescript",
+    "react",
+    "express",
+    "postgresql"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}

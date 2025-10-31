@@ -1,0 +1,90 @@
+{
+  "game": {
+    "title": "Juego del Ahorcado",
+    "subtitle": "Adivina la palabra letra por letra",
+    "newGame": "Nuevo Juego",
+    "guess": "Adivina una Letra",
+    "surrender": "Rendirse",
+    "gameWon": "¡Ganaste!",
+    "gameLost": "¡Fin del Juego!",
+    "word": "La palabra era",
+    "category": "Categoría",
+    "difficulty": "Dificultad",
+    "attemptsLeft": "Intentos restantes",
+    "guessedLetters": "Letras adivinadas",
+    "incorrectGuesses": "Errores Cometidos",
+    "lettersGuessed": "Letras Usadas",
+    "correctGuess": "¡Letra correcta!",
+    "incorrectGuess": "Letra incorrecta",
+    "alreadyGuessed": "Ya adivinada",
+    "selectLetter": "Selecciona una letra para adivinar",
+    "loading": "Cargando...",
+    "guessTheWord": "Adivina la Palabra",
+    "congratulations": "¡Felicitaciones! ¡Adivinaste la palabra!",
+    "betterLuckNextTime": "¡Mejor suerte la próxima vez!",
+    "theWordWas": "La palabra era:",
+    "correctWordWas": "La palabra correcta era:",
+    "playAgain": "Jugar de Nuevo",
+    "changeDifficulty": "Cambiar Dificultad",
+    "tryAgain": "Intentar de Nuevo"
+  },
+  "categories": {
+    "animals": "Animales",
+    "objects": "Objetos",
+    "fruits": "Frutas",
+    "countries": "Países",
+    "movies": "Películas"
+  },
+  "difficulty": {
+    "easy": "Fácil",
+    "medium": "Medio",
+    "hard": "Difícil"
+  },
+  "rules": {
+    "title": "Reglas del Juego",
+    "howToPlay": "Cómo Jugar",
+    "rule1": "Adivina la palabra letra por letra",
+    "rule2": "Tienes 6 intentos",
+    "rule3": "Cada error cuesta un intento",
+    "rule4": "Ganas al completar la palabra",
+    "rule5": "Pierdes si usas los 6 intentos",
+    "viewRules": "Ver Reglas",
+    "close": "Cerrar"
+  },
+  "tips": {
+    "title": "Consejos",
+    "tip1": "Comienza con vocales comunes (A, E, I, O, U)",
+    "tip2": "Prueba consonantes frecuentes (R, S, N, L, D)",
+    "tip3": "Usa la categoría como pista",
+    "tip4": "Busca patrones comunes de letras"
+  },
+  "stats": {
+    "wins": "Victorias",
+    "losses": "Derrotas",
+    "winRate": "% Victorias",
+    "totalGames": "Juegos Totales"
+  },
+  "footer": {
+    "about": "Acerca de",
+    "aboutText": "Juego clásico del ahorcado con diseño moderno. ¡Prueba tu vocabulario y diviértete!",
+    "quickLinks": "Enlaces Rápidos",
+    "howToPlay": "Cómo Jugar",
+    "tips": "Tips y Trucos",
+    "statistics": "Estadísticas",
+    "contact": "Conectar",
+    "copyright": "Juego del Ahorcado. Todos los derechos reservados."
+  },
+  "errors": {
+    "error": "Error",
+    "failedToStartGame": "Error al iniciar el juego. Por favor intenta de nuevo.",
+    "failedToGuessLetter": "Error al adivinar la letra. Por favor intenta de nuevo."
+  },
+  "common": {
+    "yes": "Sí",
+    "no": "No",
+    "ok": "OK",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "language": "Idioma"
+  }
+}

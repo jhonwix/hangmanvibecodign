@@ -1,10 +1,16 @@
-# 🎮 Hangman Game
+# 🎮 Hangman Game - Full Stack Application
 
-Sistema de juego Hangman (Ahorcado) con arquitectura hexagonal, soporte multiidioma (EN/ES), diseño responsive y suite completa de tests.
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
+
+Classic Hangman word-guessing game built with modern web technologies, featuring clean architecture, bilingual support (EN/ES), and responsive design.
 
 ## 📋 Descripción
 
-Juego interactivo de Hangman desarrollado con stack moderno de TypeScript, implementando arquitectura hexagonal en el backend y React en el frontend.
+Juego interactivo de Hangman desarrollado con stack moderno de TypeScript, implementando arquitectura hexagonal en el backend y React en el frontend con animaciones CSS personalizadas.
 
 ## 🛠️ Stack Tecnológico
 
@@ -26,51 +32,102 @@ Juego interactivo de Hangman desarrollado con stack moderno de TypeScript, imple
 - **i18n**: i18next
 - **Testing**: Vitest + React Testing Library
 
-## 🚀 Instalación y Setup
+## 🚀 Quick Start
 
-### Prerrequisitos
-- Node.js 18 o superior
-- Docker y Docker Compose
-- npm o yarn
+### Prerequisites
+- Docker Desktop installed
+- Docker Compose v2.0+
+- Git
 
-### 1. Clonar el repositorio
+### Option 1: Using Quick Start Scripts
+
+**Windows:**
+```bash
+start.bat
+```
+
+**Linux/macOS:**
+```bash
+chmod +x start.sh
+./start.sh
+```
+
+### Option 2: Using Docker Compose
+
+**Development Mode:**
+```bash
+docker-compose up -d
+```
+
+**Production Mode:**
+```bash
+docker-compose -f docker-compose.prod.yml up -d
+```
+
+### Option 3: Using Makefile (Linux/macOS)
+
+```bash
+make dev        # Start development environment
+make prod       # Start production environment
+make logs       # View logs
+make down       # Stop all containers
+```
+
+### Access the Application
+
+After starting, services are available at:
+
+- **Frontend (Dev)**: http://localhost:5173
+- **Frontend (Prod)**: http://localhost
+- **Backend API**: http://localhost:3000
+- **API Health**: http://localhost:3000/api/health
+- **Adminer (DB)**: http://localhost:8080
+  - System: PostgreSQL
+  - Server: postgres
+  - Username: hangman_user
+  - Password: hangman_pass
+  - Database: hangman_db
+
+## 💻 Development Setup (Without Docker)
+
+### 1. Clone repository
 ```bash
 git clone <repository-url>
 cd hangman-game
 ```
 
-### 2. Configurar variables de entorno
+### 2. Install dependencies
 ```bash
-cp .env.example .env
-# Editar .env con tus configuraciones
+npm run install:all
 ```
 
-### 3. Iniciar con Docker (Recomendado)
+### 3. Setup environment variables
 ```bash
-docker-compose up
+cp backend/.env.example backend/.env
+cp frontend/.env.example frontend/.env
 ```
 
-Servicios disponibles:
-- **Frontend**: http://localhost:5173
-- **Backend**: http://localhost:3000
-- **Adminer (BD UI)**: http://localhost:8080
-- **PostgreSQL**: localhost:5432
+### 4. Start PostgreSQL
+```bash
+docker-compose up -d postgres
+```
 
-### 4. Instalación manual (Desarrollo)
-
-#### Backend
+### 5. Run migrations and seed
 ```bash
 cd backend
-npm install
-npm run migrate:latest
+npm run migrate
 npm run seed
+```
+
+### 6. Start backend
+```bash
+cd backend
 npm run dev
 ```
 
-#### Frontend
+### 7. Start frontend (new terminal)
 ```bash
 cd frontend
-npm install
 npm run dev
 ```
 
