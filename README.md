@@ -256,7 +256,34 @@ Las contribuciones son bienvenidas. Por favor, abre un issue primero para discut
 
 Para problemas o preguntas, por favor abre un issue en el repositorio.
 
+## 📚 Documentación Adicional
+
+Esta carpeta contiene varios archivos de documentación de ayuda:
+
+| Archivo | Propósito | Cuándo Usar |
+|---------|-----------|-------------|
+| `INICIO_RAPIDO.md` | Guía express de 5 minutos | Primer inicio del proyecto |
+| `CONFIGURAR_BD.md` | Setup completo de PostgreSQL | Configuración inicial de base de datos |
+| `GUIA_INICIO_WINDOWS.md` | Instrucciones específicas para Windows | Usuarios de Windows |
+| `APLICACION_LISTA.md` | Checklist de verificación | Validar que todo funciona |
+| `PASOS_FINALES.md` | Últimos ajustes y despliegue | Antes de producción |
+| `SOLUCION_FINAL.md` | Troubleshooting completo | Si encuentras problemas |
+| `RESULTADO_FINAL.md` | Resumen del proyecto terminado | Referencia final |
+
+### 📝 Archivos Auto-Generados (No en Git)
+
+Los siguientes archivos se crean automáticamente durante el desarrollo y están excluidos del repositorio (`.gitignore`):
+
+- `*.ps1` - Scripts PowerShell para Windows
+- `*.bat` - Scripts batch para Windows
+- `.claude/settings.local.json` - Configuración local de Claude Code
+- `nul` - Archivo temporal del sistema
+
+> **Nota:** Estos archivos NO deben ser incluidos en commits ya que son específicos de cada máquina o generados automáticamente.
+
 ---
 
-**Última actualización**: 2025-10-30
-**Estado del Proyecto**: En desarrollo activo
+**Última actualización**: 2025-10-31
+**Estado del Proyecto**: ✅ Funcional - En desarrollo activo
+
+🤖 Desarrollado con [Claude Code](https://claude.com/claude-code)
