@@ -24,9 +24,11 @@ export const errorHandler = (
   console.error('Error:', {
     name: err.name,
     message: err.message,
+    details: (err as any).details || undefined,
     stack: process.env.NODE_ENV === 'development' ? err.stack : undefined,
     path: req.path,
     method: req.method,
+    body: req.body,
   });
 
   // Default error values

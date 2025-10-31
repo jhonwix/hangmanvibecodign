@@ -15,8 +15,12 @@ const app: Application = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
+const allowedOrigins = process.env.CORS_ORIGIN
+  ? process.env.CORS_ORIGIN.split(',').map(origin => origin.trim())
+  : ['http://localhost:5173'];
+
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
+  origin: allowedOrigins,
   credentials: true,
 }));
 
@@ -60,10 +64,11 @@ const startServer = async () => {
     await initializeDatabase();
     console.log('✅ Database initialized successfully');
 
-    // Start listening
-    app.listen(PORT, () => {
+    // Start listening on all network interfaces
+    app.listen(PORT, '0.0.0.0', () => {
       console.log(`🚀 Server running on port ${PORT}`);
-      console.log(`📍 API: http://localhost:${PORT}/api`);
+      console.log(`📍 Local API: http://localhost:${PORT}/api`);
+      console.log(`📍 Network API: http://192.168.58.107:${PORT}/api`);
       console.log(`💚 Health check: http://localhost:${PORT}/api/health`);
       console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
     });

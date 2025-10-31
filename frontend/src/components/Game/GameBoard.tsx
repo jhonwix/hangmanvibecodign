@@ -14,6 +14,7 @@ export const GameBoard: React.FC = () => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [showGameOver, setShowGameOver] = useState(false)
+  const [lastGuessCorrect, setLastGuessCorrect] = useState<boolean | null>(null)
 
   // Start a new game
   const startNewGame = async () => {
@@ -22,9 +23,19 @@ export const GameBoard: React.FC = () => {
       setError(null)
       setShowGameOver(false)
 
+      // Normalize language to 'en' or 'es' (handle cases like 'es-US', 'en-GB')
+      const browserLang = localStorage.getItem('i18nextLng') || 'en'
+      const normalizedLang = browserLang.startsWith('es') ? 'es' : 'en'
+
       const gameData = await apiService.startGame({
-        language: localStorage.getItem('i18nextLng') as 'en' | 'es' || 'en',
+        language: normalizedLang,
       })
+
+      console.log('🎮 Game object received:', gameData)
+      console.log('🎮 Game ID:', gameData?.id)
+      console.log('🎮 Game status:', gameData?.status)
+      console.log('🎮 Game status type:', typeof gameData?.status)
+      console.log('🎮 GameStatus.ACTIVE value:', GameStatus.ACTIVE)
 
       setGame(gameData)
     } catch (err) {
@@ -37,7 +48,18 @@ export const GameBoard: React.FC = () => {
 
   // Guess a letter
   const handleLetterGuess = async (letter: string) => {
-    if (!game || game.status !== GameStatus.ACTIVE) return
+    console.log('🔤 Letter clicked:', letter)
+    console.log('🔤 Game state:', game)
+    console.log('🔤 Game status:', game?.status)
+    console.log('🔤 Guard check - game exists:', !!game)
+    console.log('🔤 Guard check - status is ACTIVE:', game?.status === GameStatus.ACTIVE)
+
+    if (!game || game.status !== GameStatus.ACTIVE) {
+      console.log('❌ Guard clause blocked execution')
+      return
+    }
+
+    console.log('✅ Proceeding with guess...')
 
     try {
       setLoading(true)
@@ -45,20 +67,24 @@ export const GameBoard: React.FC = () => {
 
       const result: GuessResult = await apiService.guessLetter(game.id, letter)
 
-      // Update game state with the result
+      console.log('📥 Guess result from backend:', result)
+
+      // Set animation feedback
+      setLastGuessCorrect(result.correct)
+      setTimeout(() => setLastGuessCorrect(null), 600)
+
+      // Update game state with the result from backend
       const updatedGame: GameState = {
         ...game,
-        guessedLetters: [...game.guessedLetters, letter],
-        incorrectCount: result.correct ? game.incorrectCount : game.incorrectCount + 1,
-        attemptsRemaining: result.correct ? game.attemptsRemaining : game.attemptsRemaining - 1,
-        hiddenWord: result.correct
-          ? game.hiddenWord.split(' ').map((char, idx) => {
-              const wordArray = game.word?.toUpperCase().split('') || []
-              return wordArray[idx] === letter ? letter : char
-            }).join(' ')
-          : game.hiddenWord,
-        status: result.isGameOver ? (result.isWon ? GameStatus.WON : GameStatus.LOST) : GameStatus.ACTIVE,
+        hiddenWord: result.hiddenWord,
+        guessedLetters: result.guessedLetters,
+        incorrectCount: result.incorrectCount,
+        attemptsRemaining: result.attemptsRemaining,
+        status: result.status,
+        word: result.word || game.word,
       }
+
+      console.log('🔄 Updated game state:', updatedGame)
 
       setGame(updatedGame)
 
@@ -126,20 +152,20 @@ export const GameBoard: React.FC = () => {
   const isWon = game.status === GameStatus.WON
 
   return (
-    <div className="w-full max-w-5xl mx-auto">
+    <div className="w-full max-w-5xl mx-auto px-3 sm:px-6 lg:px-8">
       {/* Header with New Game button */}
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold text-gray-800">
+      <div className="flex justify-between items-center mb-4 sm:mb-6 lg:mb-8">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800">
           {t('game.title')}
         </h1>
         <button
           onClick={startNewGame}
           disabled={loading}
-          className="bg-primary text-white px-6 py-2 rounded-lg font-semibold
+          className="bg-primary text-white px-4 py-2 sm:px-6 sm:py-2.5 rounded-lg font-semibold text-sm sm:text-base
                    hover:bg-primary/90 transition-all duration-200
                    disabled:opacity-50 disabled:cursor-not-allowed
                    focus:outline-none focus:ring-2 focus:ring-primary/50
-                   hover:scale-105 active:scale-95"
+                   active:scale-95 touch-manipulation shadow-sm"
         >
           {t('game.newGame')}
         </button>
@@ -162,12 +188,20 @@ export const GameBoard: React.FC = () => {
       {/* Hangman Drawing */}
       <HangmanDrawing incorrectCount={game.incorrectCount} />
 
-      {/* Word Display */}
-      <WordDisplay
-        hiddenWord={game.hiddenWord}
-        isGameOver={isGameOver}
-        isWon={isWon}
-      />
+      {/* Word Display with feedback animation */}
+      <div
+        className={`
+          transition-all duration-300 rounded-2xl
+          ${lastGuessCorrect === true ? 'animation-flash-correct' : ''}
+          ${lastGuessCorrect === false ? 'animation-flash-wrong' : ''}
+        `}
+      >
+        <WordDisplay
+          hiddenWord={game.hiddenWord}
+          isGameOver={isGameOver}
+          isWon={isWon}
+        />
+      </div>
 
       {/* Letter Buttons */}
       <LetterButtons

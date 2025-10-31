@@ -1,8 +1,8 @@
 export enum GameStatus {
-  ACTIVE = 'ACTIVE',
-  WON = 'WON',
-  LOST = 'LOST',
-  SURRENDERED = 'SURRENDERED',
+  ACTIVE = 'active',
+  WON = 'won',
+  LOST = 'lost',
+  SURRENDERED = 'surrendered',
 }
 
 export interface GameState {

@@ -52,7 +52,8 @@ class ApiService {
     language?: 'en' | 'es'
   }): Promise<GameState> {
     const response = await this.api.post<any>('/games/start', data)
-    return response.data
+    // Response interceptor already extracts .data, so response.data is the actual API response
+    return response.data  // This is response.data.data from the backend
   }
 
   async guessLetter(gameId: number, letter: string): Promise<GuessResult> {
